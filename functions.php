@@ -7,6 +7,11 @@
  * @package _s
  */
 
+define('POST_PAGING_NAV_TEXT', array(
+	'prev_text' => __( 'Prev', '_s' ),
+	'next_text' => __( 'Next', '_s' ),
+)); 
+
 if ( ! function_exists( '_s_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -110,6 +115,36 @@ function _s_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Kontak Kami', '_s' ),
+		'id'            => 'footer-contact-us',
+		'description'   => esc_html__( 'Add widgets here.', '_s' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Menu Kanal', '_s' ),
+		'id'            => 'footer-menu',
+		'description'   => esc_html__( 'Add widgets here.', '_s' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Footer Menu Kontak', '_s' ),
+		'id'            => 'footer-menu-contact',
+		'description'   => esc_html__( 'Add widgets here.', '_s' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', '_s_widgets_init' );
 
@@ -166,3 +201,18 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+/**
+ * Modified Archive title with just show the category name
+ */
+add_filter( 'get_the_archive_title', function ( $title ) {
+
+    if( is_category() ) {
+
+        $title = single_cat_title( '', false );
+
+    }
+
+    return $title;
+
+});

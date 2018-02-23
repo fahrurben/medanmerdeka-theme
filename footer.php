@@ -14,17 +14,26 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', '_s' ) ); ?>"><?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', '_s' ), 'WordPress' );
-			?></a>
-			<span class="sep"> | </span>
-			<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', '_s' ), '_s', '<a href="https://automattic.com/">Automattic</a>' );
-			?>
-		</div><!-- .site-info -->
+		<div class="ui container">
+			<div class="ui grid">
+				<div class="sixteen wide mobile six wide computer column">
+					<a href="javascript:;" class="footer-logo">
+						<img src="<?php echo get_template_directory_uri(). '/img/logo.jpg';?>" alt="" />	
+					</a>
+					<div class="comp-profile">
+						<?php dynamic_sidebar( 'footer-contact-us' ); ?>	
+					</div>
+				</div>
+
+				<div class="sixteen wide mobile five wide computer column">
+					<?php dynamic_sidebar( 'footer-menu' ); ?>	
+				</div>
+
+				<div class="sixteen wide mobile five wide computer column">
+					<?php dynamic_sidebar( 'footer-menu-contact' ); ?>	
+				</div>
+			</div>
+		</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
