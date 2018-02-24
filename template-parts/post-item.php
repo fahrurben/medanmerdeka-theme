@@ -12,7 +12,7 @@
 <!-- News Item -->
 <a href="<?php the_permalink(); ?>" class="news-item row">
     <div class="six wide column">
-        <img class="news-thumb"  src="<?php echo get_template_directory_uri(). '/img/testimage1.jpg';?>" alt="" />
+        <img class="news-thumb"  src="<?php echo get_article_thumbnail_src($post->ID);?>" alt="" />
     </div>
     <div class="ten wide column news-item-box">
         <p class="news-item-title"><?php the_title();?></p>

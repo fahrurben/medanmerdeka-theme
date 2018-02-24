@@ -30,3 +30,33 @@ function _s_pingback_header() {
 	}
 }
 add_action( 'wp_head', '_s_pingback_header' );
+
+
+/**
+ * Modified Archive title with just show the category name
+ */
+function _s_get_the_archive_title( $title ) {
+
+	if( is_category() ) {
+
+		$title = single_cat_title( '', false );
+
+	}
+
+	return $title;	
+}
+
+add_filter( 'get_the_archive_title', _s_get_the_archive_title);
+
+/**
+ * Get the article thumbnail url
+ */
+function get_article_thumbnail_src($id) {
+	$thumb_id = get_post_thumbnail_id($id);
+	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
+	$thumb_url = $thumb_url_array[0];
+
+	$imgSrc = $thumb_id == null ? get_template_directory_uri(). '/img/noimage.png' : $thumb_url;
+
+	return $imgSrc;
+}

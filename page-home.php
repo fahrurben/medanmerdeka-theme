@@ -7,94 +7,74 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-			<div class="ui grid">
-			<?php
-			while ( have_posts() ) : the_post();
-			?>		
-					<div class="row">
-						<div class="sixteen wide mobile eleven wide computer column">
-							
-							<!-- Home Banner -->
-							<div class="home-banner">
-								<div class="main-banner">
-									<div class="banner-image"></div>
-									<div class="banner-text">
-										Lorem ipsum dolor sit amet
-									</div>
-								</div>
-							</div>	
-							<!-- Home Banner End -->
+			<div class="ui grid">	
 
-						</div>
-						<div class="sixteen wide mobile five wide computer column">
-							
-						</div>
+				<!-- row -->
+				<div class="row">
+					<div class="sixteen wide mobile eleven wide computer column">
+						
+						<!-- Home Banner -->
+						<div class="home-banner">
+							<div class="main-banner">
+								<div class="banner-image"></div>
+								<div class="banner-text">
+									Lorem ipsum dolor sit amet
+								</div>
+							</div>
+						</div>	
+						<!-- Home Banner End -->
+
 					</div>
-
-					<div class="row">
-						<div class="sixteen wide mobile eleven wide computer column ui grid">
-							<div>
-								<h3 class="news-list-title">Berita Terkini</h3>
-							</div>
-							
-							<!-- News Item -->
-							<a href="javascript:;" class="news-item row">
-								<div class="six wide column">
-									<img class="news-thumb"  src="<?php echo get_template_directory_uri(). '/img/testimage1.jpg';?>" alt="" />
-								</div>
-								<div class="ten wide column news-item-box">
-									<p class="news-item-title">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
-									<p class="news-item-date"><span class="category">News</span><span class="date">20/02/2018, 14:25 WIB</span></p>
-								</div>
-							</a>
-							<!-- New Item End -->
-
-							<a href="javascript:;" class="news-item row">
-								<div class="six wide column">
-									<img class="news-thumb" src="<?php echo get_template_directory_uri(). '/img/testimage1.jpg';?>" alt="" />
-								</div>
-								<div class="ten wide column news-item-box">
-									<p class="news-item-title">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
-									<p class="news-item-date"><span class="category">News</span><span class="date">20/02/2018, 14:25 WIB</span></p>
-								</div>
-							</a>
-						</div>
-						<div class="sixteen wide mobile five wide computer column ui grid">
-
-							<div>
-								<h3 class="news-list-title">Terpopuler</h3>
-							</div>
-
-							<!-- News Item Small -->
-							<a href="javascript:;" class="news-item small row">
-								<div class="six wide column">
-									<img class="news-thumb" src="<?php echo get_template_directory_uri(). '/img/testimage1.jpg';?>" alt="" />
-								</div>
-								<div class="ten wide column news-item-box">
-									<p class="news-item-title">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
-									<p class="news-item-date"><span class="category">News</span><span class="date">1 Jam yg lalu</span></p>
-								</div>
-							</a>	
-							<!-- News Item Small End -->
-
-							<!-- News Item Small -->
-							<a href="javascript:;" class="news-item small row">
-								<div class="six wide column">
-									<img class="news-thumb" src="<?php echo get_template_directory_uri(). '/img/testimage1.jpg';?>" alt="" />
-								</div>
-								<div class="ten wide column news-item-box">
-									<p class="news-item-title">Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet</p>
-									<p class="news-item-date"><span class="category">News</span><span class="date">1 Jam yg lalu</span></p>
-								</div>
-							</a>	
-							<!-- News Item Small End -->
-							
-						</div>
+					<div class="sixteen wide mobile five wide computer column">
+						
 					</div>
 				</div>
-			<?php
-			endwhile; // End of the loop.
-			?>
+				<!-- row -->
+
+				<!-- row -->
+				<div class="row">
+					<div class="sixteen wide mobile eleven wide computer column ui grid">
+						<div>
+							<h3 class="news-list-title">Berita Terkini</h3>
+						</div>
+						
+						<?php
+
+						// The Query
+						$args = array(
+							'post_type' => 'post'
+						);
+						$query1 = new WP_Query( $args );
+
+						while ( $query1->have_posts() ) {
+							$query1->the_post();
+
+							/*
+							* Include the Post-Format-specific template for the content.
+							* If you want to override this in a child theme, then include a file
+							* called content-___.php (where ___ is the Post Format name) and that will be used instead.
+							*/
+							get_template_part( 'template-parts/post-item', get_post_format() );
+
+
+							/* Restore original Post Data 
+							* NB: Because we are using new WP_Query we aren't stomping on the 
+							* original $wp_query and it does not need to be reset with 
+							* wp_reset_query(). We just need to set the post data back up with
+							* wp_reset_postdata().
+							*/
+							wp_reset_postdata();
+						}
+						?>
+
+					</div>
+
+					<div class="sixteen wide mobile five wide computer column ui grid">
+						<?php get_sidebar(); ?>
+					</div>
+				</div>
+				<!-- row -->
+
 			</div><!-- #grid -->
 		</main><!-- #main -->
 	</div><!-- #primary -->

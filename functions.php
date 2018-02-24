@@ -110,7 +110,7 @@ function _s_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', '_s' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', '_s' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'before_widget' => '<section id="%1$s" class="widget %2$s ui grid">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
@@ -189,6 +189,11 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Widgets functions.
+ */
+require get_template_directory() . '/inc/template-widgets.php';
+
+/**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
@@ -201,18 +206,3 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
-
-/**
- * Modified Archive title with just show the category name
- */
-add_filter( 'get_the_archive_title', function ( $title ) {
-
-    if( is_category() ) {
-
-        $title = single_cat_title( '', false );
-
-    }
-
-    return $title;
-
-});
