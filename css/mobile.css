@@ -1,0 +1,10 @@
+@media only screen and (max-width: 768px) {
+    /**
+     * News Item    
+     */ 
+        .news-item .news-item-title {
+            font-size: 1rem;
+            height: auto;
+            overflow: hidden;
+        }
+}

@@ -8,9 +8,28 @@
  */
 
 ?>
+<?php
+	$id = $post->ID;
+	$cats = get_the_category();
+	$catObj = count($cats) > 0 ? $cats[0] : null;
 
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
+
+		<!-- Breadcrump -->
+		<div class="breadcrumb">
+			<a href="<?php echo get_home_url(); ?>">Home</a>
+			<?php 
+			if($catObj!=null) :
+				$category_link = get_category_link( $catObj->term_id );
+			?>
+			<a href="<?php echo $category_link;?>"><?php echo $catObj->name ?></a>
+			<?php endif; ?>
+			<a href="javascript:;"><?php the_title();?></a>
+		</div>
+		<!-- Breadcrump end -->
+
 		<?php
 		if ( is_singular() ) :
 			the_title( '<h1 class="entry-title">', '</h1>' );
