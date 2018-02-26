@@ -44,21 +44,22 @@ class s_Post_List_Widget extends WP_Widget {
     // the query
     $the_query = new WP_Query( $args ); ?>
     <?php if ( $the_query->have_posts() ) : ?>
-        
-        <!-- pagination here -->
+
+        <!-- News list -->
+        <div class="news-list ui grid">
 
         <!-- the loop -->
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
             <!-- News Item Small -->
             <a href="<?php the_permalink(); ?>" class="news-item small row">
-                <div class="six wide column">
-                    <img class="news-thumb" src="<?php echo get_article_thumbnail_src($post->ID);?>" alt="" />
+                <div class="six wide column news-item-thumb">
+                    <img src="<?php echo get_article_thumbnail_src($post->ID);?>" alt="" />
                 </div>
                 <div class="ten wide column news-item-box">
                     <p class="news-item-title"><?php the_title();?></p>
                     <p class="news-item-date">
                         <span class="category"><?php echo get_the_category()[0]->cat_name;?></span>
-                        <span class="date"><?php echo date_i18n('j/m/Y - H:i', get_the_date('U') ); ?></span>
+                        <span class="date"><?php echo date_i18n('j/m/Y', get_the_date('U') ); ?></span>
                     </p>
                 </div>
             </a>	
@@ -66,7 +67,8 @@ class s_Post_List_Widget extends WP_Widget {
         <?php endwhile; ?>
         <!-- end of the loop -->
 
-        <!-- pagination here -->
+        </div>
+        <!-- News list end -->
 
         <?php wp_reset_postdata(); ?>
 

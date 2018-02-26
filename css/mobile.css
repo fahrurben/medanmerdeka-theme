@@ -1,4 +1,7 @@
 @media only screen and (max-width: 768px) {
+    .main-navigation .menu-toggle {
+        margin-left: 1rem;
+    }
     /**
      * News Item    
      */ 

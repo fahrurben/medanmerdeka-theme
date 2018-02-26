@@ -164,6 +164,8 @@ function _s_scripts() {
 
 	wp_enqueue_style( 'main-mobile', get_template_directory_uri(). '/css/mobile.css', array(), '20180220' );
 
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-1.12.4.min.js' );
+
 	wp_enqueue_script( '_s-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( '_s-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
