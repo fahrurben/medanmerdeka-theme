@@ -5,9 +5,15 @@
     /**
      * News Item    
      */ 
+     .row.news-item {
+        height: 8.5rem;
+    }
         .news-item .news-item-title {
-            font-size: 1rem;
-            height: auto;
+            font-size:  1.167rem;
+            height: 3.2rem;
             overflow: hidden;
         }
+        .ui.grid > .row.news-item .news-item-thumb img {
+            max-height: 100%;
+        }        
 }

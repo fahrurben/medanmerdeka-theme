@@ -53,7 +53,7 @@ add_filter( 'get_the_archive_title', _s_get_the_archive_title);
  */
 function get_article_thumbnail_src($id) {
 	$thumb_id = get_post_thumbnail_id($id);
-	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
+	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail', true);
 	$thumb_url = $thumb_url_array[0];
 
 	$imgSrc = $thumb_id == null ? get_template_directory_uri(). '/img/noimage.png' : $thumb_url;

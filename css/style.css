@@ -6,9 +6,14 @@
     font-style: normal;
 }
   
+html {
+    font-size: 12px;
+}
+
 body {
     color: #333;
     font-family: Roboto,sans-serif;
+    font-size: 1.25rem;
 }
 
 .ui.container {
@@ -69,7 +74,7 @@ body {
         #site-navigation .menu-item a {
             font-family: "Roboto Condensed", sans-serif;
             color: #fff;
-            font-size: 1rem;
+            font-size:  1.167rem;
             font-weight: 700;
             display: block;
             padding: 14px 10px;
@@ -102,6 +107,7 @@ body {
 
         .site-footer .widget-title {
             font-size: 1.167rem;
+            font-weight: 700;
         }
         .site-footer .widget_nav_menu {
 
@@ -113,7 +119,7 @@ body {
         }
         .site-footer .widget_nav_menu .menu a {
             color: #fff;
-            font-size: 0.9167rem;
+            font-size: 1rem;
         }
     
     .site-main .ui.grid {
@@ -171,15 +177,16 @@ body {
      * News Item    
      */ 
         .row.news-item {
-            height: 8rem;
+            height: 10.5rem;
             padding: 0rem;
             margin-bottom: 1.6rem;
+            box-sizing: border-box;
         }
         .news-list .row.news-item:first-child {
             margin-top: 1.6rem;
         }
         .row.news-item.small {
-            height: 5.5rem;
+            height: 6rem;
             padding: 0rem;
         }
         .news-list .row.news-item.small:first-child {
@@ -194,11 +201,12 @@ body {
                 overflow: hidden;
             }
             .news-item.small .news-item-title {
-                font-size: 1rem;
-                height: 2.6rem;
+                font-size: 1.083rem;
+                height: 3.0rem;
             }
             .news-item .news-item-box {
                 border-bottom: 1px #dedede solid;
+                height: 100%;
             }
             .ui.grid > .row.news-item .news-item-thumb {
             }
@@ -208,20 +216,21 @@ body {
                 width: 100%;
                 max-height: 8rem;
             }
+            .news-item-date {
+            }
+                .news-item-date span.category {
+                    color: #e55225;
+                    float: left;
+                    margin-right: 2rem;
+                }
+                .news-item.small span.category {
+                    margin-right: 1rem;
+                }
+                .news-item.small .news-item-date {
+                    font-size:  1rem;
+                }
 
-            .news-item-date span.category {
-                color: #e55225;
-                float: left;
-                margin-right: 2rem;
-            }
-            .news-item.small span.category {
-                margin-right: 1rem;
-            }
-            .news-item.small .news-item-date {
-                font-size: 0.8333rem
-            }
-
-            .news-item-date span.date {
-                float: left;
-                color:#666;
-            }
+                .news-item-date span.date {
+                    float: left;
+                    color:#666;
+                }

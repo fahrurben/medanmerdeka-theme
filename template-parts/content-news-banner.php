@@ -10,7 +10,7 @@
 ?>
 
 <!-- Banner Item -->
-<div class="banner-item">
+<a href="<?php the_permalink();?>" class="banner-item">
     <div class="banner-image">
         <img class="news-thumb"  src="<?php echo get_article_thumbnail_src($post->ID);?>" alt="" />
     </div>
@@ -18,5 +18,5 @@
         <p><?php the_title();?></p>
         <p class="banner-date"><?php echo date_i18n('j/m/Y - H:i', get_the_date('U') ); ?></p>
     </div>
-</div>
+</a>
 <!-- Banner Item End -->
