@@ -10,16 +10,24 @@
 ?>
 
 <!-- News Item -->
-<a href="<?php the_permalink(); ?>" class="news-item row">
-    <div class="six wide column news-item-thumb">
-        <img  src="<?php echo get_article_thumbnail_src($post->ID);?>" alt="" />
-    </div>
+<div class="news-item row">
+    <a href="<?php the_permalink(); ?>" class="six wide column news-item-thumb">
+        <img  src="<?php echo get_article_thumbnail_src($post->ID, 'medium');?>" alt="" />
+    </a>
     <div class="ten wide column news-item-box">
-        <p class="news-item-title"><?php the_title();?></p>
-        <p class="news-item-date">
-            <span class="category"><?php echo get_the_category()[0]->cat_name;?></span>
-            <span class="date"><?php echo date_i18n('j/m/Y - H:i', get_the_date('U') ); ?></span>
-        </p>
+        <div class="news-item-content ui grid">
+            <a href="<?php the_permalink(); ?>" class="news-item-title"><?php the_title();?></a>
+            <div class="news-item-date">
+                <a href="<?php echo get_category_link( get_the_category()[0]->term_id );?>" class="category">
+                    <?php echo get_the_category()[0]->cat_name;?>
+                </a>
+                <span class="date"><?php echo date_i18n('j/m/Y - H:i', get_the_date('U') ); ?></span>
+            </div>
+            <div class="news-excerpt sixteen wide computer tablet only column">
+                <?php the_excerpt(); ?>
+            </div>
+        </div>
+        
     </div>
-</a>
+</div>
 <!-- New Item End -->

@@ -17,7 +17,7 @@ get_header(); ?>
 						<div class="ui grid">
 						
 							<!-- Home Banner -->
-							<div id="home-banner" class="news-banner sixteen wide computer only column">
+							<div id="home-banner" class="news-banner sixteen wide computer tablet only column">
 							<?php
 							wp_reset_query();
 

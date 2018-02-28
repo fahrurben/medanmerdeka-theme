@@ -12,7 +12,7 @@
 <!-- Banner Item -->
 <a href="<?php the_permalink();?>" class="banner-item">
     <div class="banner-image">
-        <img class="news-thumb"  src="<?php echo get_article_thumbnail_src($post->ID);?>" alt="" />
+        <img class="news-thumb"  src="<?php echo get_article_thumbnail_src($post->ID, 'full');?>" alt="" />
     </div>
     <div class="banner-text">
         <p><?php the_title();?></p>

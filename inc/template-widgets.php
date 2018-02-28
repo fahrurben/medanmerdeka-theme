@@ -51,18 +51,22 @@ class s_Post_List_Widget extends WP_Widget {
         <!-- the loop -->
         <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
             <!-- News Item Small -->
-            <a href="<?php the_permalink(); ?>" class="news-item small row">
-                <div class="six wide column news-item-thumb">
+            <div class="news-item small row">
+                <a href="<?php the_permalink(); ?>" class="five wide column news-item-thumb">
                     <img src="<?php echo get_article_thumbnail_src($post->ID);?>" alt="" />
-                </div>
-                <div class="ten wide column news-item-box">
-                    <p class="news-item-title"><?php the_title();?></p>
-                    <p class="news-item-date">
-                        <span class="category"><?php echo get_the_category()[0]->cat_name;?></span>
+                </a>
+                <div class="eleven wide column news-item-box">
+                  <div class="news-item-content ui grid">
+                    <a href="<?php the_permalink(); ?>" class="news-item-title"><?php the_title();?></a>
+                    <div class="news-item-date">
+                        <a href="<?php echo get_category_link( get_the_category()[0]->term_id );?>" class="category">
+                          <?php echo get_the_category()[0]->cat_name;?>
+                        </a>
                         <span class="date"><?php echo date_i18n('j/m/Y', get_the_date('U') ); ?></span>
-                    </p>
+                    </div>
+                  </div>
                 </div>
-            </a>	
+            </div>	
             <!-- News Item Small End -->
         <?php endwhile; ?>
         <!-- end of the loop -->

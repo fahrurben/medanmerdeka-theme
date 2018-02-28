@@ -4,6 +4,7 @@ jQuery(document).ready(function( $ ) {
   $('#home-banner').flickity({
     // options
     cellAlign: 'left',
-    contain: true
+    contain: true,
+    autoPlay: 3000
   });
 });

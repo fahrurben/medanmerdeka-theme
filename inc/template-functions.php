@@ -49,11 +49,27 @@ function _s_get_the_archive_title( $title ) {
 add_filter( 'get_the_archive_title', _s_get_the_archive_title);
 
 /**
+ * Filter the except length to 20 words.
+ *
+ * @param int $length Excerpt length.
+ * @return int (Maybe) modified excerpt length.
+ */
+function wpdocs_custom_excerpt_length( $length ) {
+    return 25;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+function custom_excerpt_more( $more ) {
+	return '...';
+}
+add_filter( 'excerpt_more', 'custom_excerpt_more' );
+
+/**
  * Get the article thumbnail url
  */
-function get_article_thumbnail_src($id) {
+function get_article_thumbnail_src($id, $size = 'thumbnail') {
 	$thumb_id = get_post_thumbnail_id($id);
-	$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail', true);
+	$thumb_url_array = wp_get_attachment_image_src($thumb_id, $size, true);
 	$thumb_url = $thumb_url_array[0];
 
 	$imgSrc = $thumb_id == null ? get_template_directory_uri(). '/img/noimage.png' : $thumb_url;
