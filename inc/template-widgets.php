@@ -23,6 +23,7 @@ class s_Post_List_Widget extends WP_Widget {
     $title = apply_filters( 'widget_title', $instance[ 'title' ] );
     $category = $instance['category'];
     $max = $instance['max'];
+    $popular = $instance['popular'];
 
     $beforeTitle = '<div><h3 class="news-list-title">';
     $afterTitle = '</h3></div>';    
@@ -38,6 +39,11 @@ class s_Post_List_Widget extends WP_Widget {
 
     if($max != null && $max != '') {
         $args['posts_per_page'] = $max; 
+    }
+
+    if($popular != null && $popular != '') {
+      $args['orderby'] = 'post_views'; 
+      $args['order'] = 'DESC';
     }
 
 
@@ -86,6 +92,8 @@ class s_Post_List_Widget extends WP_Widget {
       $title = ! empty( $instance['title'] ) ? $instance['title'] : ''; 
       $category = ! empty( $instance['category'] ) ? $instance['category'] : null;
       $max = ! empty( $instance['max'] ) ? $instance['max'] : 5;  
+      $popular = ! empty( $instance['popular'] ) ? $instance['popular'] : null;  
+      $popularChecked = $popular != null ? ' checked' : '';
       ?>
       <p>
         <label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
@@ -99,6 +107,10 @@ class s_Post_List_Widget extends WP_Widget {
         <label for="<?php echo $this->get_field_id( 'max' ); ?>">Max:</label>
         <input type="number" id="<?php echo $this->get_field_id( 'max' ); ?>" name="<?php echo $this->get_field_name( 'max' ); ?>" value="<?php echo esc_attr( $max ); ?>" />
       </p>
+      <p>
+        <label for="<?php echo $this->get_field_id( 'popular' ); ?>">Terpopuler:</label>
+        <input type="checkbox" id="<?php echo $this->get_field_id( 'popular' ); ?>" name="<?php echo $this->get_field_name( 'popular' ); ?>" value="true" <?php echo $popularChecked;?>/>
+      </p>
       <p>This widget displays all of your post categories as a two-column list (or a one-column list when rendered responsively).</p>
     <?php }
   
@@ -108,6 +120,7 @@ class s_Post_List_Widget extends WP_Widget {
       $instance[ 'title' ] = strip_tags( $new_instance[ 'title' ] );
       $instance[ 'category' ] = $new_instance[ 'category' ];
       $instance[ 'max' ] = $new_instance[ 'max' ];
+      $instance[ 'popular' ] = $new_instance[ 'popular' ];
       return $instance;
     }
   }
