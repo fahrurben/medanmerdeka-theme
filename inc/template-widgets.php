@@ -64,7 +64,13 @@ class s_Post_List_Widget extends WP_Widget {
         <div class="news-list ui grid">
 
         <!-- the loop -->
-        <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+        <?php 
+        $i = 0;
+        while ( $the_query->have_posts() ) : 
+          $the_query->the_post();
+          
+          if($i > 0) :
+        ?>
             <!-- News Item Small -->
             <div class="news-item small row">
                 <a href="<?php the_permalink(); ?>" class="five wide column news-item-thumb">
@@ -83,7 +89,27 @@ class s_Post_List_Widget extends WP_Widget {
                 </div>
             </div>	
             <!-- News Item Small End -->
-        <?php endwhile; ?>
+        <?php 
+          else :  
+        ?> 
+          <!-- News Item Small -->
+          <div class="news-item small row">
+              <a href="<?php the_permalink(); ?>" class="sixteen wide column news-item-full-thumb">
+                  <img src="<?php echo get_article_thumbnail_src($post->ID, 'medium');?>" alt="" />
+              </a>
+              <div class="eleven wide column news-item-box">
+                <div class="news-item-content ui grid">
+                  <a href="<?php the_permalink(); ?>" class="news-item-title"><?php the_title();?></a>
+                </div>
+              </div>
+          </div>	
+          <!-- News Item Small End -->         
+        <?php 
+          endif;
+
+          $i++;
+        endwhile; 
+        ?>
         <!-- end of the loop -->
 
         </div>

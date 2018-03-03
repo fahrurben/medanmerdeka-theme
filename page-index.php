@@ -10,7 +10,8 @@ get_header(); ?>
 			<div class="ui grid">	
 				<div class="row">
 					<!-- left column -->
-					<div class="sixteen wide mobile eleven wide computer column ui grid">
+					<div class="sixteen wide mobile eleven wide computer column">
+						<div class="ui grid">
                         <?php
                         wp_reset_query();
 
@@ -22,10 +23,9 @@ get_header(); ?>
 
 						if ( $query1->have_posts() ) : ?>
 
-							<header class="page-header">
-                                <h3 class="news-list-title"><?php _e( 'Index', '_s' ); ?></h3>
-                            </header>
-                            <!-- .page-header -->
+							<div class="sixteen wide column">
+								<h3 class="news-list-title"><?php _e( 'Index', '_s' ); ?></h3>
+							</div>
 
 							<?php
 							/* Start the Loop */
@@ -41,18 +41,20 @@ get_header(); ?>
 							endwhile;
 
 							?>
-							<div class="pagination ui centered grid">
-							<?php
-							$big = 999999999; // need an unlikely integer
-							echo paginate_links( array(
-								'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-								'format' => '?paged=%#%',
-								'prev_text' => 'Sebelumnya',
-								'next_text' => 'Selanjutnya',
-								'current' => max( 1, get_query_var('paged') ),
-								'total' => $query1->max_num_pages
-							) );
-							?>
+							<div class="sixteen wide column">
+								<div class="pagination ui centered grid">
+								<?php
+								$big = 999999999; // need an unlikely integer
+								echo paginate_links( array(
+									'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+									'format' => '?paged=%#%',
+									'prev_text' => 'Sebelumnya',
+									'next_text' => 'Selanjutnya',
+									'current' => max( 1, get_query_var('paged') ),
+									'total' => $query1->max_num_pages
+								) );
+								?>
+								</div>
 							</div>
 							<?php
 
@@ -61,9 +63,10 @@ get_header(); ?>
 							get_template_part( 'template-parts/content', 'none' );
 
 						endif; ?>
+						</div>
 					</div><!-- left column -->
 
-					<div class="sixteen wide mobile five wide computer column ui grid">
+					<div class="sixteen wide mobile five wide computer column">
 						<?php get_sidebar(); ?>
 					</div>
 				</div>

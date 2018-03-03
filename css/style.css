@@ -29,6 +29,9 @@ a:hover, a:focus, a:active {
     clear: both;
     display: table;
 }
+    .nav-links {
+        margin-top: 1rem;
+    }
     .nav-links a {
         font-size: 1.25rem;
         display: inline-block;
@@ -189,24 +192,24 @@ a:hover, a:focus, a:active {
     /**
      * News Item    
      */ 
-        .row.news-item {
-            padding: 0rem;
-            margin-bottom: 1.6rem;
+        .news-item.column {
+            padding-top: 0rem !important;
         }
-        .row.news-item.small {
+        .news-item > div {
+            border-bottom: 1px #dedede solid;
+            padding-bottom: 0.6667rem;
+        }
+        .news-item.small {
             padding: 0rem;
             padding-bottom: 1rem;
         }
-        .news-list .row.news-item:first-child {
-            margin-top: 1.6rem;
-        }
-        .news-list .row.news-item.small:first-child {
-        }
-
             .news-item .news-item-box {
-                border-bottom: 1px #dedede solid;
+                /*border-bottom: 1px #dedede solid;*/
             }
            
+                .news-item .news-item-content {
+                    
+                }
                 .news-item .ui.grid.news-item-content {
                     font-size: 1.25rem;
                     color: #555;
@@ -250,6 +253,9 @@ a:hover, a:focus, a:active {
                     float:left;
                     width: 100%;
                 }
+                .ui.grid > .news-item .news-item-full-thumb img {
+                    width: 100%;
+                }
 
                 .ui.grid > .row.news-item.small .news-item-thumb img {
                     max-height: 6rem;
@@ -289,6 +295,10 @@ a:hover, a:focus, a:active {
      * Box widget
      */
           
+    .widget-area {
+        padding-top: 1rem;
+    } 
+
     .widget-area .news-list {
         margin-bottom: 3rem;
         background: #f4f4f4;

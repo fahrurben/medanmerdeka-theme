@@ -19,11 +19,11 @@ get_header(); ?>
 						<?php
 						if ( have_posts() ) : ?>
 
-							<header class="page-header">
+							<div class="sixteen wide column">
 								<?php
 									the_archive_title( '<h3 class="news-list-title">', '</h3>' );
 								?>
-							</header><!-- .page-header -->
+							</div>
 
 							<?php
 							/* Start the Loop */
@@ -39,18 +39,20 @@ get_header(); ?>
 							endwhile;
 							
 							?>
-							<div class="pagination ui centered grid">
-							<?php
-							$big = 999999999; // need an unlikely integer
-							echo paginate_links( array(
-								'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-								'format' => '?paged=%#%',
-								'prev_text' => 'Sebelumnya',
-								'next_text' => 'Selanjutnya',
-								'current' => max( 1, get_query_var('paged') ),
-								'total' => $wp_query->max_num_pages
-							) );
-							?>
+							<div class="sixteen wide column">
+								<div class="pagination ui centered grid">
+								<?php
+								$big = 999999999; // need an unlikely integer
+								echo paginate_links( array(
+									'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+									'format' => '?paged=%#%',
+									'prev_text' => 'Sebelumnya',
+									'next_text' => 'Selanjutnya',
+									'current' => max( 1, get_query_var('paged') ),
+									'total' => $wp_query->max_num_pages
+								) );
+								?>
+								</div>
 							</div>
 							<?php
 						else :
