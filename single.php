@@ -14,7 +14,7 @@ get_header(); ?>
 			<div class="ui grid">	
 				<div class="row">
 					<!-- left column -->
-					<div class="sixteen wide mobile eleven wide computer column ui grid">
+					<div class="sixteen wide mobile eleven wide computer column">
 					<?php
 					while ( have_posts() ) : the_post();
 
@@ -32,7 +32,7 @@ get_header(); ?>
 					?>
 					</div><!-- left column -->
 
-					<div class="sixteen wide mobile five wide computer column ui grid">
+					<div class="sixteen wide mobile five wide computer column">
 						<?php get_sidebar(); ?>
 					</div>
 				</div>

@@ -1,10 +1,6 @@
 <?php
 /**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package _s
+ * Template Name: Index
  */
 
 get_header(); ?>
@@ -14,20 +10,26 @@ get_header(); ?>
 			<div class="ui grid">	
 				<div class="row">
 					<!-- left column -->
-					<div class="sixteen wide mobile eleven wide computer column">
-						<div class="ui grid">
-						<?php
-						if ( have_posts() ) : ?>
+					<div class="sixteen wide mobile eleven wide computer column ui grid">
+                        <?php
+                        wp_reset_query();
+
+                        // The Query
+                        $args = array(
+                            'post_type' => 'post'
+                        );
+                        $query1 = new WP_Query( $args );
+
+						if ( $query1->have_posts() ) : ?>
 
 							<header class="page-header">
-								<?php
-									the_archive_title( '<h3 class="news-list-title">', '</h3>' );
-								?>
-							</header><!-- .page-header -->
+                                <h3 class="news-list-title"><?php _e( 'Index', '_s' ); ?></h3>
+                            </header>
+                            <!-- .page-header -->
 
 							<?php
 							/* Start the Loop */
-							while ( have_posts() ) : the_post();
+							while ( $query1->have_posts() ) : $query1->the_post();
 
 								/*
 								* Include the Post-Format-specific template for the content.
@@ -37,7 +39,7 @@ get_header(); ?>
 								get_template_part( 'template-parts/post-item', get_post_format() );
 
 							endwhile;
-							
+
 							?>
 							<div class="pagination ui centered grid">
 							<?php
@@ -48,20 +50,20 @@ get_header(); ?>
 								'prev_text' => 'Sebelumnya',
 								'next_text' => 'Selanjutnya',
 								'current' => max( 1, get_query_var('paged') ),
-								'total' => $wp_query->max_num_pages
+								'total' => $query1->max_num_pages
 							) );
 							?>
 							</div>
 							<?php
+
 						else :
 
 							get_template_part( 'template-parts/content', 'none' );
 
 						endif; ?>
-						</div>
 					</div><!-- left column -->
 
-					<div class="sixteen wide mobile five wide computer column">
+					<div class="sixteen wide mobile five wide computer column ui grid">
 						<?php get_sidebar(); ?>
 					</div>
 				</div>

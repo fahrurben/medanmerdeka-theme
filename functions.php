@@ -8,8 +8,8 @@
  */
 
 define('POST_PAGING_NAV_TEXT', array(
-	'prev_text' => __( 'Prev', '_s' ),
-	'next_text' => __( 'Next', '_s' ),
+	'prev_text' => __( 'Sebelumnya', '_s' ),
+	'next_text' => __( 'Selanjutnya', '_s' ),
 ));
 
 define('HEADLINE_CAT','headline');
@@ -121,7 +121,7 @@ function _s_widgets_init() {
 		'name'          => esc_html__( 'Sidebar', '_s' ),
 		'id'            => 'sidebar-1',
 		'description'   => esc_html__( 'Add widgets here.', '_s' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s ui grid">',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',

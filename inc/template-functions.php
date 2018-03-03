@@ -64,6 +64,8 @@ function custom_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'custom_excerpt_more' );
 
+add_filter('show_admin_bar', '__return_false');
+
 /**
  * Get the article thumbnail url
  */

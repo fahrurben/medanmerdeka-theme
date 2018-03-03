@@ -17,7 +17,7 @@ get_header(); ?>
 						<div class="ui grid">
 						
 							<!-- Home Banner -->
-							<div id="home-banner" class="news-banner sixteen wide computer tablet only column">
+							<div id="home-banner" class="news-banner sixteen wide column">
 							<?php
 							wp_reset_query();
 
@@ -51,46 +51,6 @@ get_header(); ?>
 							<!-- Home Banner End -->
 					
 						</div>
-
-						<!-- News list -->
-						<div class="news-list ui grid mobile only">
-
-							<div class="sixteen wide column">
-								<h3 class="news-list-title"><?php _e( 'Headline', '_s' ); ?></h3>
-							</div>
-
-							<?php
-							wp_reset_query();
-
-							// The Query
-							$args = array(
-								'post_type' => 'post',
-								'category_name' => HEADLINE_CAT
-							);
-							$query1 = new WP_Query( $args );
-
-							while ( $query1->have_posts() ) {
-								$query1->the_post();
-
-								/*
-								* Include the Post-Format-specific template for the content.
-								* If you want to override this in a child theme, then include a file
-								* called content-___.php (where ___ is the Post Format name) and that will be used instead.
-								*/
-								get_template_part( 'template-parts/post-item', get_post_format() );
-
-
-								/* Restore original Post Data 
-								* NB: Because we are using new WP_Query we aren't stomping on the 
-								* original $wp_query and it does not need to be reset with 
-								* wp_reset_query(). We just need to set the post data back up with
-								* wp_reset_postdata().
-								*/
-								wp_reset_postdata();
-							}
-							?>
-						</div>
-						<!-- News list end -->
 
 						<!-- News list -->
 						<div class="news-list ui grid">
@@ -133,7 +93,7 @@ get_header(); ?>
 						<!-- News list end -->
 
 						<div class="nav-links">
-							<?php $indexLink = get_site_url() + "/" + date("Y"); ?>
+							<?php $indexLink = get_permalink( get_page_by_path( 'index' ) ); ?>
 							<a href="<?php echo $indexLink;?>">INDEX</a>
 						</div>
 							

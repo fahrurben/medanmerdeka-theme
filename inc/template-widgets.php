@@ -25,10 +25,19 @@ class s_Post_List_Widget extends WP_Widget {
     $max = $instance['max'];
     $popular = $instance['popular'];
 
-    $beforeTitle = '<div><h3 class="news-list-title">';
-    $afterTitle = '</h3></div>';    
+    // Get the ID of a given category
+    $category_id = get_cat_ID( $category );
 
-    echo $args['before_widget'] . $beforeTitle . $title . $afterTitle;
+    // Get the URL of this category
+    $category_link = get_category_link( $category_id );
+
+    $category_button = ' <a href="'.$category_link.'" class="more"></a>';
+
+    $beforeTitle = '<div class="head ui grid">';
+    $afterTitle = $popular != null  && $popular != '' ? ' </div>' : $category_button.'</div>';
+    $titleContent= '<h3>'.$title.'</h3>';
+
+    echo $args['before_widget'] . $beforeTitle . $titleContent . $afterTitle;
     
 
     $args = array('post_type' => 'post');
