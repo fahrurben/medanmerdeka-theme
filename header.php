@@ -75,6 +75,13 @@
 							'menu_id'        => 'primary-menu',
 						) );
 					?>
+					<?php
+						wp_nav_menu( array(
+							'theme_location' => 'menu-2',
+							'menu_id'        => 'mobile-menu',
+							'menu_class'=> 'mobile-ext-menu'
+						) );
+					?>
 					<div class="clearfix"></div>
 				</div>
 			</div>

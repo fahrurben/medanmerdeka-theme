@@ -24,16 +24,15 @@ class s_Post_List_Widget extends WP_Widget {
     $category = $instance['category'];
     $max = $instance['max'];
     $popular = $instance['popular'];
+    $color = $instance['color'];
 
     // Get the ID of a given category
     $category_id = get_cat_ID( $category );
-
-    // Get the URL of this category
     $category_link = get_category_link( $category_id );
-
     $category_button = ' <a href="'.$category_link.'" class="more"></a>';
 
-    $beforeTitle = '<div class="head ui grid">';
+    $headColor = $color != null ? 'style="background:'.$color.'"' : '';
+    $beforeTitle = '<div class="head ui grid" '.$headColor.'>';
     $afterTitle = $popular != null  && $popular != '' ? ' </div>' : $category_button.'</div>';
     $titleContent= '<h3>'.$title.'</h3>';
 
@@ -53,6 +52,12 @@ class s_Post_List_Widget extends WP_Widget {
     if($popular != null && $popular != '') {
       $args['orderby'] = 'post_views'; 
       $args['order'] = 'DESC';
+      $args['date_query'] = array(
+        array(
+          'column' => 'post_date_gmt',
+          'after'  => '1 days ago',
+        )
+      );
     }
 
 
@@ -97,8 +102,8 @@ class s_Post_List_Widget extends WP_Widget {
               <a href="<?php the_permalink(); ?>" class="sixteen wide column news-item-full-thumb">
                   <img src="<?php echo get_article_thumbnail_src($post->ID, 'medium');?>" alt="" />
               </a>
-              <div class="eleven wide column news-item-box">
-                <div class="news-item-content ui grid">
+              <div class="sixteen wide column news-item-box">
+                <div class="news-item-content">
                   <a href="<?php the_permalink(); ?>" class="news-item-title"><?php the_title();?></a>
                 </div>
               </div>
@@ -129,6 +134,7 @@ class s_Post_List_Widget extends WP_Widget {
       $max = ! empty( $instance['max'] ) ? $instance['max'] : 5;  
       $popular = ! empty( $instance['popular'] ) ? $instance['popular'] : null;  
       $popularChecked = $popular != null ? ' checked' : '';
+      $color = ! empty( $instance['color'] ) ? $instance['color'] : null;
       ?>
       <p>
         <label for="<?php echo $this->get_field_id( 'title' ); ?>">Title:</label>
@@ -146,6 +152,10 @@ class s_Post_List_Widget extends WP_Widget {
         <label for="<?php echo $this->get_field_id( 'popular' ); ?>">Terpopuler:</label>
         <input type="checkbox" id="<?php echo $this->get_field_id( 'popular' ); ?>" name="<?php echo $this->get_field_name( 'popular' ); ?>" value="true" <?php echo $popularChecked;?>/>
       </p>
+      <p>
+        <label for="<?php echo $this->get_field_id( 'color' ); ?>">Terpopuler:</label>
+        <input type="color" id="<?php echo $this->get_field_id( 'color' ); ?>" name="<?php echo $this->get_field_name( 'color' ); ?>" value="<?php echo $color; ?>" />
+      </p>
       <p>This widget displays all of your post categories as a two-column list (or a one-column list when rendered responsively).</p>
     <?php }
   
@@ -156,6 +166,7 @@ class s_Post_List_Widget extends WP_Widget {
       $instance[ 'category' ] = $new_instance[ 'category' ];
       $instance[ 'max' ] = $new_instance[ 'max' ];
       $instance[ 'popular' ] = $new_instance[ 'popular' ];
+      $instance[ 'color' ] = $new_instance[ 'color' ];
       return $instance;
     }
   }

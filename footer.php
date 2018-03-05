@@ -25,11 +25,11 @@
 					</div>
 				</div>
 
-				<div class="sixteen wide mobile five wide computer column">
+				<div class="five wide computer tablet only column">
 					<?php dynamic_sidebar( 'footer-menu' ); ?>	
 				</div>
 
-				<div class="sixteen wide mobile five wide computer column">
+				<div class="five wide computer tablet only column">
 					<?php dynamic_sidebar( 'footer-menu-contact' ); ?>	
 				</div>
 			</div>

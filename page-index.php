@@ -43,17 +43,19 @@ get_header(); ?>
 							?>
 							<div class="sixteen wide column">
 								<div class="pagination ui centered grid">
-								<?php
-								$big = 999999999; // need an unlikely integer
-								echo paginate_links( array(
-									'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-									'format' => '?paged=%#%',
-									'prev_text' => 'Sebelumnya',
-									'next_text' => 'Selanjutnya',
-									'current' => max( 1, get_query_var('paged') ),
-									'total' => $query1->max_num_pages
-								) );
-								?>
+									<div>
+									<?php
+									$big = 999999999; // need an unlikely integer
+									echo paginate_links( array(
+										'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+										'format' => '?paged=%#%',
+										'prev_text' => 'Sebelumnya',
+										'next_text' => 'Selanjutnya',
+										'current' => max( 1, get_query_var('paged') ),
+										'total' => $query1->max_num_pages
+									) );
+									?>
+									</div>
 								</div>
 							</div>
 							<?php

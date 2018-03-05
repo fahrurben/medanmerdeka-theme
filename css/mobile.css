@@ -10,6 +10,10 @@
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
     }
+    /** Mobile nav show **/
+    .main-navigation ul.mobile-ext-menu {
+        display: block;
+    }
 
     /**
      * Home Banner
