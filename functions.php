@@ -170,7 +170,7 @@ function _s_scripts() {
 
 	wp_enqueue_style( 'flickity', get_template_directory_uri(). '/css/flickity.css' );
 	
-	wp_enqueue_style( 'main', get_template_directory_uri(). '/css/style.css', array(), '20180305.13' );
+	wp_enqueue_style( 'main', get_template_directory_uri(). '/css/style.css', array(), '20180305.15' );
 
 	wp_enqueue_style( 'main-mobile', get_template_directory_uri(). '/css/mobile.css', array(), '20180305.13' );
 
@@ -182,7 +182,7 @@ function _s_scripts() {
 
 	wp_enqueue_script( 'flickity', get_template_directory_uri() . '/js/flickity.pkgd.min.js' );
 
-	wp_enqueue_script( '_s-main', get_template_directory_uri() . '/js/script.js', array(), '20180305.13', true );
+	wp_enqueue_script( '_s-main', get_template_directory_uri() . '/js/script.js', array(), '20180313.14', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -213,7 +213,16 @@ require get_template_directory() . '/inc/customizer.php';
 /**
  * Widgets functions.
  */
-require get_template_directory() . '/inc/template-widgets.php';
+require get_template_directory() . '/widgets/new-post-widget.php';
+require get_template_directory() . '/widgets/search-post-widget.php';
+require get_template_directory() . '/widgets/gallery-shortcode.php';
+// register the widget
+function s_register_widgets() { 
+	register_widget( 's_Post_List_Widget' );
+	register_widget( 's_Search_Post_Widget' );
+}
+add_shortcode( 'gallery', 'carousel_gallery_shortcode' );
+add_action( 'widgets_init', 's_register_widgets' );
 
 /**
  * Load Jetpack compatibility file.

@@ -29,7 +29,7 @@
 					<?php dynamic_sidebar( 'footer-menu' ); ?>	
 				</div>
 
-				<div class="five wide computer tablet only column">
+				<div class="ixteen wide mobile five wide computer column">
 					<?php dynamic_sidebar( 'footer-menu-contact' ); ?>	
 				</div>
 			</div>

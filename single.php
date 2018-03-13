@@ -17,9 +17,14 @@ get_header(); ?>
 					<div class="sixteen wide mobile eleven wide computer column">
 					<?php
 					while ( have_posts() ) : the_post();
+						$format = get_post_format( $post->ID );
 
-						get_template_part( 'template-parts/content', get_post_type() );
-
+						if($format === 'gallery') {
+							get_template_part( 'template-parts/content-format-gallery', get_post_type() );
+						}	
+						else {
+							get_template_part( 'template-parts/content', get_post_type() );
+						}
 						the_post_navigation();
 
 						// If comments are open or we have at least one comment, load up the comment template.

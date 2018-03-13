@@ -2,6 +2,14 @@
 /**
  * Template Name: Index
  */
+$url = $_SERVER['REQUEST_URI'];
+$path = parse_url($url, PHP_URL_PATH);
+$arrPath = explode('/', $path);
+$pageNo = 1;
+$pathKey = array_search('page',$arrPath);
+if($pathKey != false) {
+	$pageNo = $arrPath[$pathKey+1];
+}
 
 get_header(); ?>
 
@@ -17,8 +25,9 @@ get_header(); ?>
 
                         // The Query
                         $args = array(
-                            'post_type' => 'post'
-                        );
+							'post_type' => 'post',
+							'paged' => $pageNo
+						);
                         $query1 = new WP_Query( $args );
 
 						if ( $query1->have_posts() ) : ?>
