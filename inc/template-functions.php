@@ -78,3 +78,11 @@ function get_article_thumbnail_src($id, $size = 'thumbnail') {
 
 	return $imgSrc;
 }
+
+/** Display image with caption */
+function display_image_and_caption() {
+	echo '<div class="post-featured-image">';
+	the_post_thumbnail();
+	echo '<div class="post-thumbnail-caption">' . get_post( get_post_thumbnail_id() )->post_excerpt . '</div>';
+	echo '</div>';
+}

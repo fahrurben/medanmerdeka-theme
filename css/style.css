@@ -413,3 +413,10 @@ a:hover, a:focus, a:active {
         .gallery-item .gallery-caption {
             margin-left: 0;
         }    
+
+.post-featured-image {
+    background-color: rgb(244, 244, 244);
+}        
+    .post-featured-image .post-thumbnail-caption {
+        padding: 0rem 0.5833rem 0.75rem 0.75rem;
+    }

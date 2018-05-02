@@ -48,7 +48,7 @@
 		endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php _s_post_thumbnail(); ?>
+	<?php display_image_and_caption(); ?>
 
 	<div class="entry-content">
 		<?php
