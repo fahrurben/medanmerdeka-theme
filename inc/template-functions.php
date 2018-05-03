@@ -83,6 +83,9 @@ function get_article_thumbnail_src($id, $size = 'thumbnail') {
 function display_image_and_caption() {
 	echo '<div class="post-featured-image">';
 	the_post_thumbnail();
-	echo '<div class="post-thumbnail-caption">' . get_post( get_post_thumbnail_id() )->post_excerpt . '</div>';
+	$excerpt = get_post( get_post_thumbnail_id() )->post_excerpt;
+	if(trim($excerpt) !== '') {
+		echo '<div class="post-thumbnail-caption">' . $excerpt . '</div>';
+	}
 	echo '</div>';
 }

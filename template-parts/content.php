@@ -48,7 +48,11 @@
 		endif; ?>
 	</header><!-- .entry-header -->
 
-	<?php display_image_and_caption(); ?>
+	<?php 
+		if(has_post_thumbnail()) {
+			display_image_and_caption();
+		} 
+	?>
 
 	<div class="entry-content">
 		<?php
