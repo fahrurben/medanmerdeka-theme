@@ -7,11 +7,29 @@
  * @package _s
  */
 
-get_header(); ?>
+get_header();
 
+$catImages = CATEGORY_IMAGES;
+?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 			<div class="ui grid">	
+			<?php
+				if($cat != null) {
+					$catTerm = get_term_by('id', $cat, 'category');
+					$catSlug = $catTerm->slug;
+					if(array_key_exists($catSlug,$catImages)):
+						$catImgSrc = get_template_directory_uri().'/img/'.$catImages[$catSlug]['image'];
+						$catImgLink = $catImages[$catSlug]['link'];
+						?>
+						<div class="row">
+							<div class="column">
+								<a target="_blank" href="<?php echo $catImgLink;?>"><img src="<?php echo $catImgSrc;?>" alt="" /></a>
+							</div>
+						</div>
+					<?php endif;
+				}					
+			?>
 				<div class="row">
 					<!-- left column -->
 					<div class="sixteen wide mobile eleven wide computer column">

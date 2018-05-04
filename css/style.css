@@ -66,6 +66,10 @@ a:hover, a:focus, a:active {
             content: none;
         }
     /** HEADER */
+
+    .site-header {
+        background-color: #000000;
+    }
     .sticky {
         position: fixed;
         top: 0;

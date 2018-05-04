@@ -14,6 +14,13 @@ define('POST_PAGING_NAV_TEXT', array(
 
 define('HEADLINE_CAT','headline');
 
+define('CATEGORY_IMAGES',array(
+	"serdang-bedagai" => array(
+		"image"=> "banner-serdang-bedagai.jpg",
+		"link"=> "http://diskominfo.serdangbedagaikab.go.id/"
+	)
+));
+
 if ( ! function_exists( '_s_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
