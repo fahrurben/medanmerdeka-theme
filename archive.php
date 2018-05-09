@@ -15,10 +15,12 @@ $catImages = CATEGORY_IMAGES;
 		<main id="main" class="site-main">
 			<div class="ui grid">	
 			<?php
+				$catBannerExist = false;
 				if($cat != null) {
 					$catTerm = get_term_by('id', $cat, 'category');
 					$catSlug = $catTerm->slug;
 					if(array_key_exists($catSlug,$catImages)):
+						$catBannerExist = true;
 						$catImgSrc = get_template_directory_uri().'/img/'.$catImages[$catSlug]['image'];
 						$catImgLink = $catImages[$catSlug]['link'];
 						?>
@@ -30,6 +32,13 @@ $catImages = CATEGORY_IMAGES;
 					<?php endif;
 				}					
 			?>
+			<?php if(!$catBannerExist) : ?>
+				<div class="row">
+					<div class="column">
+						<?php dynamic_sidebar( 'top-banner' ); ?>	
+					</div>
+				</div>
+			<?php endif; ?>
 				<div class="row">
 					<!-- left column -->
 					<div class="sixteen wide mobile eleven wide computer column">

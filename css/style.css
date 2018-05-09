@@ -424,3 +424,11 @@ a:hover, a:focus, a:active {
     .post-featured-image .post-thumbnail-caption {
         padding: 0rem 0.5833rem 0.75rem 0.75rem;
     }
+
+/** Widget Image */    
+.widget_media_image {
+    list-style-type: none;
+}    
+    .widget_media_image img {
+        width: 100%;
+    }

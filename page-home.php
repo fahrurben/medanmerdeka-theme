@@ -9,6 +9,12 @@ get_header(); ?>
 		<main id="main" class="site-main">
 			<div class="ui grid">	
 
+				<div class="row">
+					<div class="column">
+						<?php dynamic_sidebar( 'top-banner' ); ?>	
+					</div>
+				</div>
+
 				<!-- row -->
 				<div class="row">
 
